@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://riley123:Baller97@rileydevconnector.wygel.mongodb.net/myFirstDatabase?retryWrites=true&",
+    "jwtSecret": "somesecret",
+    "githubClientId": "Iv1.b0ca569543f355d5",
+    "githubSecret": "35526759226bbcaaf71d83067fac51484e44aca2"
+}
