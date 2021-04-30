@@ -1,2 +1,3 @@
 ## A MERN Stack Blog / Developer Profile Website:
-https://radiant-crag-60329.herokuapp.com
+https://protected-lake-73765.herokuapp.com/posts
+
