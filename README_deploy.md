@@ -8,6 +8,8 @@ Creating the application
 building:
 
 `heroku create ` to create an app if you don't already have one
+git push heroku master
+heroku open
 
 
 to push to github:
