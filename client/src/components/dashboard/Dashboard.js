@@ -7,11 +7,13 @@ import Education from './Education';
 import { connect } from 'react-redux';
 import { deleteAccount, getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layouts/Spinner';
+import axios from 'axios';
 
-const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: { profile, loading } }) => {
+const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: { profile, loading }, imgTag='blah' }) => {
 
     useEffect(() => {
         getCurrentProfile();
+
     }, [getCurrentProfile]);
 
     return loading && profile === null ? <Spinner /> : <Fragment>
@@ -30,6 +32,10 @@ const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: 
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
                 <i className="fas fa-user-minus"> Delete My Account</i>
             </button>
+            {/* { axios.get(`/api/profile/user/608b03add7940dd5cb466390/image`).then((imgTag) => (
+                <img src={imgTag} />
+            )) } */}
+        
         </div>
     </Fragment>) : 
     (<Fragment>

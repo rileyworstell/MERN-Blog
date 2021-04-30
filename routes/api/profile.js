@@ -4,6 +4,11 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const request = require('request');
 const config = require('config');
+const multer = require('multer');
+const upload = multer({
+    dest: 'images',
+    storage: multer.memoryStorage(),
+    });
 
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
@@ -47,8 +52,6 @@ router.post('/', auth, async (req, res) => {
     if(facebook) profileFields.social.facebook = facebook;
     if(linkedin) profileFields.social.linkedin = linkedin;
     if(instagram) profileFields.social.instagram = instagram;
-    
-
     try {
         let profile = await Profile.findOne({ user: req.user.id  });
         if (profile) {
@@ -67,7 +70,22 @@ router.post('/', auth, async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
+
+
+
     // res.send('hello');
+});
+
+// @route    POST api/upload
+// @desc     upload image
+// @access   Private 
+router.post('/upload', [auth, upload.single('upload')], async (req, res) => {
+    try{
+        res.send();
+    } catch(err) {
+        res.send(err, 'error -- riley');
+    }
+
 });
 
 // @route    GET api/profile
@@ -97,6 +115,55 @@ router.get('/user/:user_id', async (req, res) => {
             return res.status(400).json({ msg: 'Profile not found' });
         }
         res.status(500).send('Server Error');
+    }
+});
+
+// @route    PUT api/profile/user/:user_id/upload
+// @desc     PUT profile by user ID and upload image
+// @access   Public
+router.put('/user/:user_id/upload', [auth,  upload.single('upload')], async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name']);
+        // profile not found
+        if(!profile) { 
+            return res.status(400).json({ msg: 'Profile not found' });
+        } else {
+            profile.image = await req.file.buffer;
+            console.log('profile image', profile.image);
+            // console.log('hello', req.file);
+            // console.log(upload);
+            profile.save()
+            return res.status(201).json(profile);
+        }
+                return res.json(profile);
+    } catch(err) {
+        console.error(err.message, 'some kind of error');
+        if(err.kind == 'ObjectId') {
+            return res.status(400).json({ msg: 'Profile not found' });
+        }
+        res.status(500).send('Server Error we here');
+    }
+});
+
+// @route    Get api/profile/user/:user_id/upload
+// @desc     Get image for user
+// @access   Public
+router.get('/user/:user_id/image', auth , async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.params.user_id }).populate('user', ['name']);
+        // profile not found
+        if(!profile) { 
+            return res.status(400).json({ msg: 'Profile not found' });
+        } else {
+            res.set('Content-Type', 'image/png')
+            res.status(202).send(profile.image);
+        }
+    } catch(err) {
+        console.error(err.message, 'some kind of error');
+        if(err.kind == 'ObjectId') {
+            return res.status(400).json({ msg: 'Profile not found' });
+        }
+        res.status(500).send('Server Error we here');
     }
 });
 

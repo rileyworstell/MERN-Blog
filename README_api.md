@@ -18,6 +18,8 @@ Install Dependencies and Basic Express Setup.
     developer installations below.
     `npm i -D nodemon concurrently`
 
+    npm i multer
+
     added new scripts to start in package.json and initial server.
 
 
@@ -28,4 +30,7 @@ middleware ---> Auth:
     middleware/auth.js
 
 
+
+IMAGE HELP:
+https://medium.com/swlh/uploading-images-to-your-node-js-backend-978261eb0724
 
