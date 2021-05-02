@@ -18,11 +18,14 @@ router.post('/',[auth, [
     try {
         const user = await User.findById(req.user.id).select('-password');
 
-        const newPost = new Post({
+        let formData = {
             text: req.body.text,
             name: user.name,
-            user: req.user.id
-        });
+            user: req.user.id,
+        }
+        if( req.body.title ) { formData.title = req.body.title }
+        if( req.body.category ) { formData.category = req.body.category }
+        const newPost = new Post(formData);
         const post = await newPost.save();
 
         res.json(post);

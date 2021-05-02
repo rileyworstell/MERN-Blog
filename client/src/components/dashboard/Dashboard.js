@@ -32,9 +32,7 @@ const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: 
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
                 <i className="fas fa-user-minus"> Delete My Account</i>
             </button>
-            {/* { axios.get(`/api/profile/user/608b03add7940dd5cb466390/image`).then((imgTag) => (
-                <img src={imgTag} />
-            )) } */}
+
         
         </div>
     </Fragment>) : 

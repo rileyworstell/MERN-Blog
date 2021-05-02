@@ -4,7 +4,16 @@ import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
 
 const PostForm = ({ addPost}) => {
-    const [text, setText] = useState('');
+    const [formData, setFormData] = useState({
+      text: '',
+      title: '',
+      category: ''
+    });
+    const { text, title, category } = formData;
+
+    const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+
     return (
         <div className="post-form">
         <div className="bg-primary p">
@@ -12,13 +21,18 @@ const PostForm = ({ addPost}) => {
         </div>
         <form onSubmit={e => {
             e.preventDefault();
-            addPost({ text });
-            setText('');
+            addPost(formData);
         }} className="form my-1">
+        <div className="form-group">
+          <input type="text" placeholder="Title" name="title" value={title} onChange={e => onChange(e)} />
+        </div>
+        <div className="form-group">
+          <input type="text" placeholder="Category" name="category" value={category} onChange={e => onChange(e)} />
+        </div>
           <textarea
             name="text"
             value={text}
-            onChange={e => setText(e.target.value)}
+            onChange={e => onChange(e)}
             cols="30"
             rows="5"
             placeholder="Create a post"

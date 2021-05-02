@@ -5,10 +5,8 @@ import { getPosts } from '../../actions/post';
 import Spinner from '../layouts/Spinner';
 import PostForm from './PostForm';
 
-const CreatePost = ({ getPosts, isAuthenticated, post: { posts, loading }}) => {
-    useEffect(() => {
-        getPosts();
-    }, [getPosts]);
+const CreatePost = ({ isAuthenticated, post: { posts, loading }}) => {
+
     return ( loading ? <Spinner /> : (
         <Fragment>
         <h1 className="large text-primary">Posts</h1>

@@ -10,6 +10,12 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
+    title: {
+        type: String
+    },
+    category: {
+        type: String
+    },
     name: {
         type: String
     },
