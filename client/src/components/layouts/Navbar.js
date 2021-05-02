@@ -5,9 +5,12 @@ import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
 
-export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+export const Navbar = ({ auth: { isAuthenticated, loading }, logout, user }) => {
   const authLinks = (
     <ul>
+    { user && user.adminLevel === 'admin' && (
+      <li><Link to="/admin">Admin</Link></li>
+    )}
     <li><Link to="/profiles">Bloggers</Link></li>
     <li><Link to="/posts">Posts</Link></li>
     <li><Link to="/create-post">Create Post</Link></li>
@@ -40,11 +43,13 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  user: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

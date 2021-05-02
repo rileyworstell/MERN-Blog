@@ -57,6 +57,9 @@ const PostItem = ({ showActions, addLike, removeLike, deletePost, auth, post: { 
           </Link>
         </div>
         <div>
+        { title && (
+          <h3 className="my-1">{title}</h3>
+        )}
           <p className="my-1" dangerouslySetInnerHTML={{ __html: text}}>
            {/* {unescape(text)} */}
           </p>

@@ -5,7 +5,7 @@ import { getPosts } from '../../actions/post';
 import Spinner from '../layouts/Spinner';
 import PostForm from './PostForm';
 
-const CreatePost = ({ isAuthenticated, post: { posts, loading }}) => {
+const CreatePost = ({ isAuthenticated, loading, post: { posts }}) => {
 
     return ( loading ? <Spinner /> : (
         <Fragment>
@@ -24,12 +24,14 @@ const CreatePost = ({ isAuthenticated, post: { posts, loading }}) => {
 CreatePost.propTypes = {
     getPosts: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
+    loading: PropTypes.bool.isRequired,
     post: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated,
+    loading: state.auth.loading,
     post: state.post
 });
 
-export default connect(mapStateToProps, { getPosts })(CreatePost);
+export default connect(mapStateToProps, {})(CreatePost);
