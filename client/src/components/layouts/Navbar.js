@@ -8,7 +8,7 @@ import { logout } from '../../actions/auth';
 export const Navbar = ({ auth: { isAuthenticated, loading }, logout, user }) => {
   const authLinks = (
     <ul>
-    { user && user.adminLevel === 'admin' && (
+    { !loading && user && user.adminLevel === 'admin' && (
       <li><Link to="/admin">Admin</Link></li>
     )}
     <li><Link to="/profiles">Bloggers</Link></li>
@@ -44,7 +44,7 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout, user }) => 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  user: PropTypes.array.isRequired,
+  user: PropTypes.object,
 }
 
 const mapStateToProps = state => ({

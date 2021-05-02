@@ -19,7 +19,8 @@ const UserSchema = new mongoose.Schema({
         default: Date.now()
     },
     adminLevel: {
-        type: String
+        type: String,
+        default: 'Not Admin'
     }
 });
 

@@ -93,7 +93,7 @@ router.post('/upload', [auth, upload.single('upload')], async (req, res) => {
 // @access   Public
 router.get('/', async (req, res) => {
     try {
-        const profiles = await Profile.find().populate('user', ['name']);
+        const profiles = await Profile.find().populate('user', ['name', 'adminLevel']);
         res.json(profiles);
     } catch(err) {
         console.error(err.message);

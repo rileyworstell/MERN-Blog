@@ -2,12 +2,9 @@ import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 import DashboardActions from './DashboardActions';
-import Experience from './Experience';
-import Education from './Education';
 import { connect } from 'react-redux';
 import { deleteAccount, getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layouts/Spinner';
-import axios from 'axios';
 
 const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: { profile, loading }, imgTag='blah' }) => {
 

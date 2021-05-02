@@ -1,7 +1,6 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getPosts } from '../../actions/post';
 import Spinner from '../layouts/Spinner';
 import PostForm from './PostForm';
 

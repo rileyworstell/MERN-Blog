@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Spinner from '../layouts/Spinner';
 import { connect } from 'react-redux';
+import AdminUserItems from './AdminUserItems';
 
 const Admin = ({ isAuthenticated, loading, user }) => {
-    return ( !loading && user && user.adminLevel === 'admin' ? (
+    return ( isAuthenticated && !loading && user && user.adminLevel === 'admin' ? (
         <div>
             You are an Admin
+            <AdminUserItems />
         </div>
     ) : (<h1>Hey, stop that. You are not an admin :P </h1>)
 )
@@ -14,7 +16,7 @@ const Admin = ({ isAuthenticated, loading, user }) => {
 
 Admin.propTypes = {
     isAuthenticated: PropTypes.bool,
-    user: PropTypes.array
+    user: PropTypes.object
 }
 
 const mapStateToProps = state => ({
