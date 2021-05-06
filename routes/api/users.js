@@ -3,10 +3,28 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../../middleware/auth');
 // const { check, validationResult } = require('express-validator/check');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+
+// @route get api/users/approve
+// @desc 
+// access Private
+router.get('/approve/:user_id', auth, async (req, res) => {
+    try {
+        const user = await User.findOne({ _id: req.params.user_id });
+        console.log(user, 'user');
+        user.adminLevel = 'Approved';
+        await user.save();
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
 
 // @route    POST api/users
 // @desc     Register user

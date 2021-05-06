@@ -35,6 +35,18 @@ img {
 }
 
 /* Utilities */
+
+.admin-form {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: grey;
+  /* color: red; */
+}
+.pd-left-sm {
+  padding-left: 10px;
+  padding-top: 15px;
+}
+
 .container {
   max-width: 1100px;
   margin: auto;

@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     },
     adminLevel: {
         type: String,
-        default: 'Not Admin'
+        default: 'Not Approved'
     }
 });
 
