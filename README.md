@@ -2,3 +2,9 @@
 https://protected-lake-73765.herokuapp.com/posts
 
 The FE of this site uses react + redux which can be found in the client folder :)
+
+My TODO:
+- ~~ User Auth ~~
+- Add Ability to upload photos for users.
+- More CSS :) - To look prettier.
+
