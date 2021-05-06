@@ -24,5 +24,6 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const APPROVE_USER = 'APPROVE_USER';
 export const APPROVE_FAILED = 'APPROVE_FAILED';
-
+export const ADMIN_USER = 'ADMIN_USER';
+export const ADMIN_FAILED = 'ADMIN_FAILED';
 

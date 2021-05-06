@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import Spinner from '../layouts/Spinner';
 import { getProfiles } from '../../actions/profile';
-import { setApproved } from '../../actions/users';
+import { setApproved, setAdmin } from '../../actions/users';
 
-const AdminUserItems = ({ getProfiles, setApproved, profile: { profiles, loading } }) => {
+const AdminUserItems = ({ getProfiles, setApproved, setAdmin, profile: { profiles, loading } }) => {
     useEffect(() => {
         getProfiles();
     }, [getProfiles]);
@@ -20,11 +20,13 @@ const AdminUserItems = ({ getProfiles, setApproved, profile: { profiles, loading
       const approveUser = (userId) => {
           // send update request to update adminLevel to approved
         setApproved(userId);
+        getProfiles();
       };
 
       const adminUser = (userId) => {
           // send update request to update adminLevel to admin
-          console.log(userId);
+          setAdmin(userId);
+          getProfiles();
       }
 
     return ( loading ? (<Spinner />) : (
@@ -49,6 +51,7 @@ const AdminUserItems = ({ getProfiles, setApproved, profile: { profiles, loading
 
 AdminUserItems.propTypes = {
     getProfiles: PropTypes.func.isRequired,
+    setAdmin: PropTypes.func.isRequired,
     setApproved: PropTypes.func.isRequired,
     profile: PropTypes.object.isRequired
 }
@@ -58,4 +61,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { getProfiles, setApproved })(AdminUserItems);
+export default connect(mapStateToProps, { getProfiles, setApproved, setAdmin })(AdminUserItems);

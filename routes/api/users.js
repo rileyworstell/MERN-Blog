@@ -23,7 +23,22 @@ router.get('/approve/:user_id', auth, async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
+});
 
+// @route get api/users/approve
+// @desc 
+// access Private
+router.get('/admin/:user_id', auth, async (req, res) => {
+    try {
+        const user = await User.findOne({ _id: req.params.user_id });
+        console.log(user, 'user');
+        user.adminLevel = 'admin';
+        await user.save();
+        res.json(user);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 });
 
 // @route    POST api/users

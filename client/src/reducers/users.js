@@ -1,5 +1,5 @@
 import {
-    APPROVE_USER, APPROVE_FAILED
+    APPROVE_USER, APPROVE_FAILED, ADMIN_USER, ADMIN_FAILED
 } from '../actions/types';
 
 const initialState = {
@@ -13,6 +13,8 @@ export default function(state = initialState, action) {
     const { type } = action;
 
     switch(type) {
+        case ADMIN_USER:
+        case ADMIN_FAILED:
         case APPROVE_USER:
         case APPROVE_FAILED:
             return {
