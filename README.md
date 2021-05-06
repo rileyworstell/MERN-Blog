@@ -9,6 +9,8 @@ My TODO:
 - <del> Comments </del>
 - <del> Endpoints for public blogs </del>
 - <del> Like & Unlike a Post </del>
+- <del> Ensure non admin users can't reach the /admin page </del>
+- <del> Create Admin Buttons to promote or demote users </del>
 - Add Ability to upload photos for users.
 - More CSS :) - To look prettier.
 
