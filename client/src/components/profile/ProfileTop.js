@@ -2,14 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ProfileTop = ({ profile: {
-    status, company, location, website, social, user: { name }
+    status, profileImage, company, location, website, social, user: { name }
 }}) => {
     return (
         <div className="profile-top bg-primary p-2">
+        { console.log('hello', profileImage)}
           <h1 className="large">{name}</h1>
           <p className="lead">{status} {company && <span>at {company}</span>}</p>
           <p>{location && <span>{location}</span>}</p>
           <div className="icons my-1">
+          { profileImage && (
+            <img src={profileImage} alt="no image" width="275" height="250"/>
+          ) }
           {
               website && (
                 <a href={website} target="_blank" rel="noopener noreferrer">

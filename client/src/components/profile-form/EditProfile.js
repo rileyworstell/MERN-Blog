@@ -13,7 +13,8 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
         facebook: '',
         linkedin: '',
         youtube: '',
-        instagram: ''
+        instagram: '',
+        profileImage: '',
     });
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
@@ -25,6 +26,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
         setFormData({
             website: loading || !profile.website ? '' : profile.website,
             location: loading || !profile.location ? '' : profile.location,
+            profileImage: loading || !profile.profileImage ? '' : profile.profileImage,
             bio: loading || !profile.bio ? '' : profile.bio,
             twitter: loading || !profile.social ? '' : profile.social.twitter,
             facebook: loading || !profile.social ? '' : profile.social.facebook,
@@ -35,7 +37,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
     }, [loading, getCurrentProfile]);
 
     const {
-        website, location,
+        website, location, profileImage,
         bio, twitter, facebook, linkedin, youtube, instagram
     } = formData;
 
@@ -60,6 +62,12 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
           <input type="text" placeholder="Website" onChange={e => onChange(e)} value={website} name="website" />
           <small className="form-text"
             >Could be your own or a company website</small
+          >
+        </div>
+        <div className="form-group">
+          <input type="text" placeholder="profileImage" onChange={e => onChange(e)} value={profileImage} name="profileImage" />
+          <small className="form-text"
+            >Link to an image for your profile</small
           >
         </div>
         <div className="form-group">

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { deleteAccount, getCurrentProfile } from '../../actions/profile';
 import Spinner from '../layouts/Spinner';
 
-const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: { profile, loading }, imgTag='blah' }) => {
+const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: { profile, loading, profileImage }, imgTag='blah' }) => {
 
     useEffect(() => {
         getCurrentProfile();
@@ -22,7 +22,10 @@ const Dashboard = ({ deleteAccount, getCurrentProfile, auth: { user }, profile: 
     (<Fragment>
         <DashboardActions />
         <div className="my-2">
-            
+
+            <div>{ profile && profile.profileImage && (
+                <img src={profile.profileImage} width="275" height="250"/>
+                )}</div>
             <div>{ profile && profile.website }</div>
             <div>{ profile && profile.location }</div>
             <div>{ profile && profile.bio }</div><br />

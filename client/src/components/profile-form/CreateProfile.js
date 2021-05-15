@@ -13,14 +13,15 @@ const CreateProfile = ({ createProfile, history }) => {
         facebook: '',
         linkedin: '',
         youtube: '',
-        instagram: ''
+        instagram: '',
+        profileImage: '',
     });
 
     const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
     const {
         website, location,
-        bio, twitter, facebook, linkedin, youtube, instagram
+        bio, twitter, facebook, linkedin, youtube, instagram, profileImage,
     } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,8 +44,12 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className="form-group">
           <input type="text" placeholder="Website" onChange={e => onChange(e)} value={website} name="website" />
           <small className="form-text"
-            >Could be your own or a company website</small
-          >
+            >Could be your own or a company website</small>
+        </div>
+        <div className="form-group">
+          <input type="text" placeholder="Profile Image" onChange={e => onChange(e)} value={profileImage} name="profileImage" />
+          <small className="form-text"
+            >Profile Image Link</small>
         </div>
         <div className="form-group">
           <input type="text" placeholder="Location" onChange={e => onChange(e)} value={location} name="location" />

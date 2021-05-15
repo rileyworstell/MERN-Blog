@@ -14,6 +14,9 @@ const ProfileSchema = new mongoose.Schema({
     image: {
         type: Buffer
     },
+    profileImage: {
+        type: String,
+    },
     bio: {
         type: String
     },

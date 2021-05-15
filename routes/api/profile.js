@@ -37,7 +37,7 @@ router.post('/', auth, async (req, res) => {
     // const errors = validationResult(req);
     // if(!errors.isEmpty()) { return res.status(400).json({ errors: errors.array() }) }
 
-    const { website, location, bio, youtube, facebook, twitter, instagram, linkedin } = req.body;
+    const { website, profileImage, location, bio, youtube, facebook, twitter, instagram, linkedin } = req.body;
 
     // Build profile object
     const profileFields = {};
@@ -45,6 +45,7 @@ router.post('/', auth, async (req, res) => {
     if(website) profileFields.website = website;
     if(location) profileFields.location = location;
     if(bio) profileFields.bio = bio;
+    if(profileImage) profileFields.profileImage = profileImage;
 
     profileFields.social = {};
     if(youtube) profileFields.social.youtube = youtube;
