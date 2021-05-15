@@ -13,7 +13,10 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout, user }) => 
     )}
     <li><Link to="/profiles">Bloggers</Link></li>
     <li><Link to="/posts">Posts</Link></li>
-    <li><Link to="/create-post">Create Post</Link></li>
+    { !loading && user && user.adminLevel !== 'Not Approved' && (
+      <li><Link to="/create-post">Create Post</Link></li>
+    )}
+    
     <li><Link to="/dashboard">
     <i className="fas fa-user"></i>{' '}
     <span className="hide-sm">Dashboard</span></Link></li>

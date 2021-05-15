@@ -28,4 +28,5 @@ My TODO:
 - Email Notification if someone likes your post? -- Maybe
 - Bug for inserting website. If no http:// added then add it.
 - Add Tags to Posts 
+- Add a list of people who have viewed a post
 
